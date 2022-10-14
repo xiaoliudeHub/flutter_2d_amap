@@ -67,6 +67,11 @@ NSString* _types = @"010000|010100|020000|030000|040000|050000|050100|060000|060
     if ([super init]) {
 
         _viewId = viewId;
+        [AMapLocationManager updatePrivacyShow:AMapPrivacyShowStatusDidShow privacyInfo:AMapPrivacyInfoStatusDidContain];
+        [AMapLocationManager updatePrivacyAgree:AMapPrivacyAgreeStatusDidAgree];
+
+        [AMapSearchAPI updatePrivacyShow:AMapPrivacyShowStatusDidShow privacyInfo:AMapPrivacyInfoStatusDidContain];
+            [AMapSearchAPI updatePrivacyAgree:AMapPrivacyAgreeStatusDidAgree];
         NSString* channelName = [NSString stringWithFormat:@"plugins.example/flutter_2d_amap_%lld", viewId];
         _channel = [FlutterMethodChannel methodChannelWithName:channelName binaryMessenger:messenger];
         __weak __typeof__(self) weakSelf = self;
